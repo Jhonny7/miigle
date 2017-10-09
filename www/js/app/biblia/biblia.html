@@ -1,0 +1,26 @@
+<ion-view view-title="Biblia RV60" 
+style="background-color:#fff;height:100% " cache-view="false" class="galleryView">
+    <ion-content>
+        <ion-list>
+            <center>
+            <h2 style="font-size: 150%">Antiguo Testamento</h2>
+            </center>
+            <ion-item class="caption" ng-repeat="item in librosAntiguos | orderBy:'item.id'" item="item" style="    box-shadow: 0px 1px #123;">
+                <a class="footerCard item item-avatar item-icon-right clase" href="" ng-click="algo({{item}})" style="    min-height: 65px;margin: auto;box-shadow: 3px 2px 2px #123;" on-hold="opcion({{item}})">
+                    <h2 style="margin-left: 10px;font-size: 26px;display: inline-block;">{{item.id}} .- </h2>
+                    <h2 style="font-size: 26px;margin-top: 10px;display: inline-block;" >{{item.nombre}}</h2>
+                </a>
+            </ion-item>
+            <center>
+            <h2 style="font-size: 150%">Nuevo Testamento</h2>
+            </center>
+            <ion-item class="caption" ng-repeat="item in librosNuevos | orderBy:'item.id'" item="item" style="    box-shadow: 0px 1px #123;">
+                <a class="footerCard item item-avatar item-icon-right clase" href="" ng-click="searchByBook({{item}})" style="    min-height: 65px;margin: auto;box-shadow: 3px 2px 2px #123;" on-hold="opcion({{item}})">
+                    <h2 style="margin-left: 10px;font-size: 26px;display: inline-block;">{{item.id}} .- </h2>
+                    <h2 style="font-size: 26px;margin-top: 10px;display: inline-block;" >{{item.nombre}}</h2>
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    
+</ion-view>

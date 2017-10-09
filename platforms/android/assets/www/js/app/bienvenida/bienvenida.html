@@ -1,0 +1,18 @@
+<ion-view view-title="Dios Te Ama {{data.nombre}} :)" 
+style="background-color:#fff;height:100% " cache-view="false" class="galleryView">
+    <ion-content>
+        <ion-list>
+            <div class="row row-wrap row-no-padding">
+                <ion-item ng-repeat="item in items" class="col col-50 button button-icon light animated bounceInUp" ng-style="{ 'background-color' : item.color };" style="height: 10%;">
+                    <center>
+                    <img src="img/{{item.icon}}" alt="logo" class="myImagen" style="height: 23%"/>
+                    <i class="icon "></i>
+                    <p class="bold" style="font-size: 150%;">{{ item.title }}</p>
+                </center>
+                </ion-item>
+            </div>
+        </ion-list>
+
+    </ion-content>
+    
+</ion-view>

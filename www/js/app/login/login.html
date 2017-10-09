@@ -1,0 +1,59 @@
+<ion-view view-title="LOGIN" style="background-color:#ebf0f3;height:100% ">
+    <ion-content>
+        <div class="tabs-striped tabs-color-stable">
+            <div class="tabs" style="position: static;background-color: #e17a2d;">
+                <a class="tab-item myTabs active" data-ink-color="#205a2d" data-ink-opacity=".35"
+                ng-click="change('0')">
+                    Login
+                </a>
+                <a class="tab-item myTabs" data-ink-color="#205a2d" data-ink-opacity=".35"
+                ng-click="change('1')">
+                    Registro
+                </a>
+            </div>
+        </div>
+        &nbsp;
+        <center>
+            <div class="myBoxLogin" id="0" ng-show="!registro" style="padding-top: 5%;
+    padding-bottom: 17%;">
+                <img src="img/church.png" alt="logo" class="myImagen" style="height: 23%;margin-top: 14%;    margin-bottom: 16%;"/>
+                
+                <input placeholder="Email" type="text" class="myInput" ng-model="data.a" style="margin-top: 6%;border-color: lightgray;" />
+                <input placeholder="Contraseña" type="password" class="myInput" ng-model="data.password" style="margin-top: 6%;border-color: lightgray;" />
+
+                <button class="button button-flat button-block myBtn" ng-click="login()" style="margin-top: 6%;">
+                    Entrar
+                </button>
+                
+            </div>
+        </center>
+            <center>
+                <div  id="1" ng-show="registro" class="myBoxLogin" style="    padding-top: 5%;
+    padding-bottom: 17%;">
+                    <img src="img/takePhoto.png" alt="logo" class="myImagen" style="height: 23%;margin-top: 14%;"/>
+                    <input placeholder="Nombre" type="text" class="myInput" ng-model="data.nombre" style="margin-top: 6%;border-color: lightgray;" />
+                    <input placeholder="Apellido Paterno" type="text" class="myInput" ng-model="data.apellido_paterno" style="margin-top: 6%;border-color: lightgray;" />
+                    <input placeholder="Apellido Materno" type="text" class="myInput" ng-model="data.apellido_materno" style="margin-top: 6%;border-color: lightgray;" />
+                    <center>
+                        <select class="mySelect" ng-model="data.idRol">
+                            <option value="volvo">Volvo</option>
+                        </select>
+                    </center>
+                    <input placeholder="Usuario" type="text" class="myInput" ng-model="data.usuario" style="margin-top: 6%;border-color: lightgray;" />
+                    <input placeholder="Contraseña" type="password" class="myInput" ng-model="data.password2" style="margin-top: 6%;border-color: lightgray;" />
+                    <div style="margin-bottom: 8px; margin-top: 16px;">
+                        <input type="checkbox" ng-model="data.value1" style="display: inline-block;" />
+                        <p style="display: inline-block;">¿Deseas recibir notificaciones?</p>   
+                    </div>
+                    <button class="button button-flat button-block myBtn" ng-click="login()" style="margin-top: 6%;">
+                    Registrar
+                </button>
+                
+                </div>  
+            </center>
+                  
+        <br/>
+
+    </ion-content>
+</ion-view>
+
