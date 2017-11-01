@@ -2,6 +2,7 @@ angular.module('MasterServiceModule', ['LoginServiceModule', 'DaoServiceModule']
     var masterService = {};
     masterService.data = null;
     masterService.dataBase;
+    masterService.genericObject;
     /*Init*/
     masterService.init = function() {
         console.log("init app");
@@ -24,11 +25,9 @@ angular.module('MasterServiceModule', ['LoginServiceModule', 'DaoServiceModule']
     }
     /*Servicios*/
     masterService.getLoginService = function() {
-        console.log("obteniendo LoginService");
         return LoginService;
     }
     masterService.getDaoService = function() {
-        console.log("obteniendo DaoService");
         return DaoService;
     }
     /*Directivas*/
@@ -49,6 +48,13 @@ angular.module('MasterServiceModule', ['LoginServiceModule', 'DaoServiceModule']
     }
     masterService.getTimeout = function() {
         return $timeout;
+    }
+    /*Métodos Compartidos*/
+    masterService.setGenericObject = function(object) {
+        masterService.genericObject = object;
+    }
+    masterService.getGenericObject = function() {
+        return masterService.genericObject;
     }
     /*Métodos propios*/
     function dbcopy(dbName) {

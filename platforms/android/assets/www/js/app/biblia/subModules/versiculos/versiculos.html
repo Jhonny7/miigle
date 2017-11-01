@@ -1,0 +1,33 @@
+<ion-view view-title="{{book.nombre}}" 
+style="background-color:#fff;height:100% " cache-view="false" class="galleryView">
+    <ion-content>
+        <div class="tabs-striped tabs-color-stable" style="display: inline-block;" ng-repeat="cap in capitulos">
+            <div class="tabs" style="position: static;background-color: #e17a2d;">
+                <a class="tab-item myTabs active" data-ink-color="#205a2d" data-ink-opacity=".35"
+                ng-click="change('0')">
+                    Cap {{cap.id}}
+                </a>
+            </div>
+        </div>
+
+        <ion-list>
+            <ion-item class="caption" ng-repeat="item in versiculos | orderBy:'item.id'" item="item" style="box-shadow: 59px 2px #123;">
+                <a class="footerCard item item-avatar item-icon-right clase" href="" ng-click="algo({{item}})" style="    min-height: 65px;margin: auto;box-shadow: 3px 2px 2px #123;" on-hold="opcion({{item}})">
+                    <h2 style="margin-left: 10px;font-size: 26px;display: inline-block;">{{item.versiculo}} .- </h2>
+                    <h2 style="font-size: 26px;margin-top: 10px;display: inline-block;" >{{item.texto}}</h2>
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

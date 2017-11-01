@@ -1,5 +1,5 @@
 var db = null;
-angular.module('starter', ['ionic', 'ngCordova', 'BienvenidaModule', 'MenuModule', 'LoginModule', 'BienvenidaModule', 'CelulaModule', 'BibliaModule', 'VersiculoModule']).
+angular.module('starter', ['ionic', 'ngCordova', 'BienvenidaModule', 'MenuModule', 'LoginModule', 'BienvenidaModule', 'CelulaModule', 'BibliaModule', 'VersiculoModule', 'CapituloModule']).
 run(function($ionicPlatform, MasterService, $state, $cordovaSQLite, DaoService) {
     $ionicPlatform.ready(function() {
         console.log("start");

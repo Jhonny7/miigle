@@ -6,47 +6,42 @@ function BibliaController($scope, MasterService) {
     $scope.data.selectedBook;
     //Consultar libros//
     MasterService.getDaoService().getAllByTableAndConditions("books", "testamento = (?)", ['O']).then(function(r) {
-        if (r != null) {
-            if (r.rows != null) {
-                if (r.rows.length > 0) {
-                    var itemsColl = [];
-                    for (var i = 0; i < r.rows.length; i++) {
-                        itemsColl[i] = r.rows.item(i);
-                    };
-                    $scope.librosAntiguos = itemsColl;
-                }
-            }
-        }
+        $scope.librosAntiguos = MasterService.getDaoService().getListTable(r);
     });
     MasterService.getDaoService().getAllByTableAndConditions("books", "testamento = (?)", ['N']).then(function(r) {
-        if (r != null) {
-            if (r.rows != null) {
-                if (r.rows.length > 0) {
-                    var itemsColl = [];
-                    for (var i = 0; i < r.rows.length; i++) {
-                        itemsColl[i] = r.rows.item(i);
-                    };
-                    $scope.librosNuevos = itemsColl;
-                }
-            }
-        }
+        $scope.librosNuevos = MasterService.getDaoService().getListTable(r);
     });
     $scope.searchByBook = function(book) {
         try {
-            $scope.data.selectedBook = book;
-            MasterService.getDaoService().getAllByTableAndConditions("versiculos", "id_book = (?)", [book.id]).then(function(r) {
-                if (r != null) {
-                    if (r.rows != null) {
-                        if (r.rows.length > 0) {
-                            var itemsColl = [];
-                            for (var i = 0; i < r.rows.length; i++) {
-                                itemsColl[i] = r.rows.item(i);
-                            };
-                            $scope.versiculos = itemsColl;
+            var objectArray = {};
+            objectArray.book = book;
+            MasterService.getDaoService().getAllByTableAndConditionsDistinct("versiculos", "id_book = (?)", [book.id], "capitulo").then(function(r) {
+                $scope.capitulos = MasterService.getDaoService().getListTable(r);
+                if ($scope.capitulos.length > 0) {
+                    objectArray.capitulos = $scope.capitulos;
+                    MasterService.getDaoService().getAllByTableAndConditions("versiculos", "id_book = (?) AND capitulo = (?)", [book.id, 1]).then(function(r2) {
+                        $scope.verisculos = MasterService.getDaoService().getListTable(r2);
+                        if ($scope.verisculos.length > 0) {
+                            objectArray.verisculos = $scope.verisculos;
+                            MasterService.setGenericObject(objectArray);
                             MasterService.getState().go('menu.versiculo');
+                        } else {
+                            console.log('Sin capítulos');
                         }
-                    }
+                    });
+                } else {
+                    console.log('Sin capítulos');
                 }
+            });
+        } catch (err) {
+            console.log("Error: " + err);
+        }
+    }
+    $scope.searchMax = function(book) {
+        try {
+            MasterService.getDaoService().getMax("versiculos", "id_book = (?)", [book.id], "capitulo").then(function(r) {
+                console.log(r.rows.item(0).maximo);
+                book.maximo = r.rows.item(0).maximo;
             });
         } catch (err) {
             console.log("Error: " + err);

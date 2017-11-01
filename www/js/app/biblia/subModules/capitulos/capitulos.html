@@ -1,0 +1,12 @@
+<ion-view view-title="Capítulos de {{book.nombre}}" 
+style="background-color:#fff;height:100% " cache-view="true" class="galleryView">
+    <ion-content>
+        <ion-list>
+            <ion-item class="caption" ng-repeat="item in capitulos | orderBy:'item.id'" item="item" style="box-shadow: 0px 1px #123;">
+                <a class="footerCard item item-avatar item-icon-right clase" href="" ng-click="searchByCap({{item}})" style="    min-height: 65px;margin: auto;box-shadow: 3px 2px 2px #123;">
+                    <h2 style="margin-left: 10px;font-size: 26px;display: inline-block;">Capítulo {{item.capitulo}} </h2>
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
